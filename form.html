@@ -1,0 +1,776 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Student Information</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+            linear-gradient(
+                135deg,
+                #667eea,
+                #764ba2
+            );
+
+            padding: 40px 15px;
+        }
+
+
+        .container {
+
+            max-width: 1000px;
+
+            margin: auto;
+        }
+
+
+        .form-box {
+
+            background: white;
+
+            padding: 35px;
+
+            border-radius: 20px;
+
+            box-shadow:
+            0 20px 50px
+            rgba(0,0,0,0.25);
+        }
+
+
+        .header {
+
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+
+        .header .icon {
+
+            font-size: 55px;
+        }
+
+
+        .header h1 {
+
+            color: #333;
+
+            margin-top: 10px;
+
+            font-size: 32px;
+        }
+
+
+        .header p {
+
+            color: #777;
+
+            margin-top: 8px;
+        }
+
+
+        .section-title {
+
+            color: #5b4bc4;
+
+            border-bottom:
+            2px solid #eee;
+
+            padding-bottom: 10px;
+
+            margin: 25px 0 20px;
+        }
+
+
+        .row {
+
+            display: flex;
+
+            gap: 20px;
+        }
+
+
+        .input-group {
+
+            flex: 1;
+
+            margin-bottom: 18px;
+        }
+
+
+        label {
+
+            display: block;
+
+            font-weight: bold;
+
+            color: #444;
+
+            margin-bottom: 7px;
+        }
+
+
+        input,
+        select,
+        textarea {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border:
+            1px solid #ccc;
+
+            border-radius: 9px;
+
+            outline: none;
+
+            font-size: 15px;
+        }
+
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+
+            border-color: #667eea;
+
+            box-shadow:
+            0 0 7px
+            rgba(102,126,234,0.3);
+        }
+
+
+        textarea {
+
+            height: 100px;
+
+            resize: none;
+        }
+
+
+        .gender {
+
+            display: flex;
+
+            gap: 25px;
+        }
+
+
+        .gender label {
+
+            font-weight: normal;
+        }
+
+
+        .gender input {
+
+            width: auto;
+        }
+
+
+        .skills {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 12px;
+        }
+
+
+        .skills label {
+
+            background: #f0efff;
+
+            padding: 10px 15px;
+
+            border-radius: 20px;
+
+            font-weight: normal;
+        }
+
+
+        .skills input {
+
+            width: auto;
+        }
+
+
+        .photo-box {
+
+            background: #f7f7ff;
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            border:
+            2px dashed #aaa;
+        }
+
+
+        .buttons {
+
+            display: flex;
+
+            gap: 15px;
+
+            margin-top: 30px;
+        }
+
+
+        button {
+
+            flex: 1;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        .submit-btn {
+
+            background:
+            linear-gradient(
+                135deg,
+                #667eea,
+                #764ba2
+            );
+        }
+
+
+        .reset-btn {
+
+            background: #555;
+        }
+
+
+        @media(max-width:700px) {
+
+            .row {
+
+                flex-direction: column;
+
+                gap: 0;
+            }
+
+
+            .gender {
+
+                flex-direction: column;
+
+                gap: 8px;
+            }
+
+
+            .buttons {
+
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<div class="form-box">
+
+
+<div class="header">
+
+    <div class="icon">
+        🎓
+    </div>
+
+    <h1>
+        Student Information
+    </h1>
+
+    <p>
+        Student Registration Form
+    </p>
+
+</div>
+
+
+<form
+    method="POST"
+    enctype="multipart/form-data"
+>
+
+
+{% csrf_token %}
+
+
+<h2 class="section-title">
+    👤 Personal Information
+</h2>
+
+
+<div class="row">
+
+
+<div class="input-group">
+
+<label>
+    Full Name
+</label>
+
+<input
+    type="text"
+    name="name"
+    placeholder="Enter full name"
+    required
+>
+
+</div>
+
+
+<div class="input-group">
+
+<label>
+    Date of Birth
+</label>
+
+<input
+    type="date"
+    name="dob"
+    required
+>
+
+</div>
+
+
+</div>
+
+
+<div class="row">
+
+
+<div class="input-group">
+
+<label>
+    Email
+</label>
+
+<input
+    type="email"
+    name="email"
+    placeholder="Enter email"
+    required
+>
+
+</div>
+
+
+<div class="input-group">
+
+<label>
+    Mobile Number
+</label>
+
+<input
+    type="tel"
+    name="mobile"
+    placeholder="Enter mobile number"
+    required
+>
+
+</div>
+
+
+</div>
+
+
+<div class="input-group">
+
+<label>
+    Gender
+</label>
+
+<div class="gender">
+
+<label>
+<input
+    type="radio"
+    name="gender"
+    value="Male"
+    required
+>
+Male
+</label>
+
+
+<label>
+<input
+    type="radio"
+    name="gender"
+    value="Female"
+>
+Female
+</label>
+
+
+<label>
+<input
+    type="radio"
+    name="gender"
+    value="Other"
+>
+Other
+</label>
+
+</div>
+
+</div>
+
+
+<h2 class="section-title">
+    🏫 Academic Information
+</h2>
+
+
+<div class="row">
+
+
+<div class="input-group">
+
+<label>
+    College Name
+</label>
+
+<input
+    type="text"
+    name="college"
+    placeholder="Enter college name"
+    required
+>
+
+</div>
+
+
+<div class="input-group">
+
+<label>
+    Course
+</label>
+
+<select name="course" required>
+
+<option value="">
+    Select Course
+</option>
+
+<option>BCS</option>
+
+<option>BCA</option>
+
+<option>B.Sc Computer Science</option>
+
+<option>Engineering</option>
+
+<option>MCA</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<div class="row">
+
+
+<div class="input-group">
+
+<label>
+    Semester
+</label>
+
+<select name="semester" required>
+
+<option value="">
+    Select Semester
+</option>
+
+<option>1st Semester</option>
+<option>2nd Semester</option>
+<option>3rd Semester</option>
+<option>4th Semester</option>
+<option>5th Semester</option>
+<option>6th Semester</option>
+
+</select>
+
+</div>
+
+
+<div class="input-group">
+
+<label>
+    Roll Number
+</label>
+
+<input
+    type="text"
+    name="roll_no"
+    placeholder="Enter roll number"
+    required
+>
+
+</div>
+
+</div>
+
+
+<div class="row">
+
+
+<div class="input-group">
+
+<label>
+    10th Percentage
+</label>
+
+<input
+    type="number"
+    name="tenth"
+    step="0.01"
+    required
+>
+
+</div>
+
+
+<div class="input-group">
+
+<label>
+    12th Percentage
+</label>
+
+<input
+    type="number"
+    name="twelfth"
+    step="0.01"
+    required
+>
+
+</div>
+
+</div>
+
+
+<h2 class="section-title">
+    🏠 Address Information
+</h2>
+
+
+<div class="input-group">
+
+<label>
+    Address
+</label>
+
+<textarea
+    name="address"
+    placeholder="Enter full address"
+    required
+></textarea>
+
+</div>
+
+
+<div class="row">
+
+
+<div class="input-group">
+
+<label>
+    City
+</label>
+
+<input
+    type="text"
+    name="city"
+    required
+>
+
+</div>
+
+
+<div class="input-group">
+
+<label>
+    State
+</label>
+
+<input
+    type="text"
+    name="state"
+    required
+>
+
+</div>
+
+</div>
+
+
+<h2 class="section-title">
+    💻 Skills
+</h2>
+
+
+<div class="skills">
+
+
+<label>
+
+<input
+    type="checkbox"
+    name="skills"
+    value="Python"
+>
+
+Python
+
+</label>
+
+
+<label>
+
+<input
+    type="checkbox"
+    name="skills"
+    value="HTML"
+>
+
+HTML
+
+</label>
+
+
+<label>
+
+<input
+    type="checkbox"
+    name="skills"
+    value="CSS"
+>
+
+CSS
+
+</label>
+
+
+<label>
+
+<input
+    type="checkbox"
+    name="skills"
+    value="JavaScript"
+>
+
+JavaScript
+
+</label>
+
+
+</div>
+
+
+<h2 class="section-title">
+    📷 Profile Photo
+</h2>
+
+
+<div class="photo-box">
+
+<input
+    type="file"
+    name="photo"
+    accept="image/*"
+>
+
+</div>
+
+
+<div class="buttons">
+
+
+<button
+    type="submit"
+    class="submit-btn"
+>
+
+✅ Submit Student
+
+</button>
+
+
+<button
+    type="reset"
+    class="reset-btn"
+>
+
+🔄 Reset
+
+</button>
+
+
+</div>
+
+
+</form>
+
+
+</div>
+
+</div>
+
+
+</body>
+
+</html>
+
